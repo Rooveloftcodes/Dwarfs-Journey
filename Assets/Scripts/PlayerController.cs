@@ -6,11 +6,24 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    public float walkSpeed = 5f;
-    public bool IsMoving {get; private set;}
+    private bool _isMoving = false;
+    public float walkSpeed = 5f;    
     Vector2 moveInput;    
     Rigidbody2D rb;
 
+    Animator animator;
+
+    public bool IsMoving 
+    {
+        get {
+            return _isMoving;
+        }
+        private set
+        {
+            _isMoving = value;
+            animator.SetBool("isMoving", value);
+        }
+    }
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,5 +43,6 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        IsMoving = moveInput != Vector2.zero;
     }
 }

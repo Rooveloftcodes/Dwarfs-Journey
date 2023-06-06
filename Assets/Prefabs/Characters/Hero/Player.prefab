@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2810778012675424813}
   - component: {fileID: 3304541934883935024}
   - component: {fileID: 8967955932584087582}
-  - component: {fileID: 1381043031871921898}
+  - component: {fileID: 4011022621111818986}
   - component: {fileID: 2029131078366333122}
+  - component: {fileID: 1381043031871921898}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -114,19 +115,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1381043031871921898
-MonoBehaviour:
+--- !u!95 &4011022621111818986
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4523631094995997978}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 379575f13df9e9f4082d26d6bfa94d47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkSpeed: 5
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ab04de6c4efb356449d31cf02666db58, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2029131078366333122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,3 +218,16 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1381043031871921898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4523631094995997978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379575f13df9e9f4082d26d6bfa94d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 5
