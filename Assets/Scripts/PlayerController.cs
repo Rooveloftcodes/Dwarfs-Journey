@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         set
         {
             _isMoving = value;
-            animator.SetBool("isMoving", value);
+            animator.SetBool(AnimationStrings.isMoving, value);
         }
     }
 
@@ -49,14 +49,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
-    void Start()
-    {
-
-    }
-    void Update()
-    {
-
-    }
+    //deleted start and update methods
     void FixedUpdate()
     {
         rb.velocity = new Vector2(moveInput.x * walkSpeed * Time.fixedDeltaTime, rb.velocity.y);

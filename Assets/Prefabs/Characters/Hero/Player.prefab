@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4011022621111818986}
   - component: {fileID: 2029131078366333122}
   - component: {fileID: 1381043031871921898}
+  - component: {fileID: 7963550518170863718}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -244,3 +245,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isMoving: 0
   walkSpeed: 5
+  _isFacingRight: 1
+--- !u!70 &7963550518170863718
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4523631094995997978}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.003800422, y: -0.4522088}
+  m_Size: {x: 0.46628875, y: 0.5955824}
+  m_Direction: 0
