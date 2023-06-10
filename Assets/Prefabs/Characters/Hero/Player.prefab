@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 8967955932584087582}
   - component: {fileID: 4011022621111818986}
   - component: {fileID: 2029131078366333122}
-  - component: {fileID: 1381043031871921898}
   - component: {fileID: 7963550518170863718}
+  - component: {fileID: 1381043031871921898}
+  - component: {fileID: 2035387731427057022}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -231,21 +232,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1381043031871921898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4523631094995997978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 379575f13df9e9f4082d26d6bfa94d47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isMoving: 0
-  walkSpeed: 5
-  _isFacingRight: 1
 --- !u!70 &7963550518170863718
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -281,3 +267,30 @@ CapsuleCollider2D:
   m_Offset: {x: 0.003800422, y: -0.44896933}
   m_Size: {x: 0.46628875, y: 0.5891035}
   m_Direction: 0
+--- !u!114 &1381043031871921898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4523631094995997978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379575f13df9e9f4082d26d6bfa94d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isMoving: 0
+  walkSpeed: 5
+  _isFacingRight: 1
+--- !u!114 &2035387731427057022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4523631094995997978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85667d35740b2f7478e0b7e0b45d97fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private bool _isMoving = false;
-    public float walkSpeed = 5f;
+    [SerializeField] public float walkSpeed = 1.5f;
     Vector2 moveInput;
     Rigidbody2D rb;
 
