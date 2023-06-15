@@ -227,6 +227,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 81880490-53ba-4d68-ba46-e97f9172b253
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 379575f13df9e9f4082d26d6bfa94d47, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 36101089-47bd-401e-939b-a9ab599a327a
+    m_ActionName: Player/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -282,6 +298,7 @@ MonoBehaviour:
   _isMoving: 0
   walkSpeed: 5
   _isFacingRight: 1
+  jumpImpulse: 10
 --- !u!114 &2035387731427057022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,3 +311,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85667d35740b2f7478e0b7e0b45d97fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  castFilter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  groundDistance: 0.05
+  _isGrounded: 0
