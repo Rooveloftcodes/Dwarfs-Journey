@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms;
+using UnityEngine.UIElements;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]
+/*[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]*/
 public class PlayerController : MonoBehaviour
 {
-    Vector2 moveInput;
+    /*Vector2 moveInput;
 
     [SerializeField] private bool _isMoving = false;
     [SerializeField] public float walkSpeed = 1.5f;
@@ -53,9 +55,10 @@ public class PlayerController : MonoBehaviour
         touchingDirections = GetComponent<TouchingDirections>();
     }
     //deleted start and update methods
-    void FixedUpdate()
+    public void FixedUpdate()
     {
         rb.velocity = new Vector2(moveInput.x * walkSpeed * Time.fixedDeltaTime, rb.velocity.y);
+        animator.SetFloat(AnimationStrings.yVelocity, rb.velocity.y);
     }
     private void SetFacingDirection(Vector2 moveInput)
     {
@@ -82,6 +85,60 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Jump key pressed");
             animator.SetTrigger(AnimationStrings.jump);
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+        }
+    }*/
+    [SerializeField] public float speed;
+    private Rigidbody2D body;
+    private Animator anim;
+
+    private float horizontalInput;
+    private bool isGrounded;
+    private object isJumping;
+
+    private void Awake()
+    {
+        //get references for components
+        body = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
+    private void Update()
+    {
+        horizontalInput = Input.GetAxis("Horizontal");
+
+        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        if(horizontalInput > 0.01f)
+        {
+            transform.localScale = Vector3.one;
+        }
+        else if(horizontalInput < -0.01f)
+        {
+            transform.localScale = new Vector3(-1,1,1);
+        }
+
+        if(Input.GetKey(KeyCode.Space) && isGrounded)
+        {
+            //TODO increase jump height
+            jump();
+        }
+        anim.SetBool("isRunning", horizontalInput != 0);
+        anim.SetBool("isGrounded", isGrounded);
+    }
+    void jump()
+    {
+        body.velocity = new Vector2(body.velocity.x, speed);
+        anim.SetTrigger("isJumping");
+        anim.SetBool("isRunning", false);
+        isGrounded = false;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)//player is colliding with tilemap/ground
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
         }
     }
 }

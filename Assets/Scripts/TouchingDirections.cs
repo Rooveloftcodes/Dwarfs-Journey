@@ -8,23 +8,23 @@ public class TouchingDirections : MonoBehaviour
     public float groundDistance = 0.05f;
 
     CapsuleCollider2D touchingCol;
-    Animator animator; 
+    Animator animator;
+
     RaycastHit2D[] groundHits = new RaycastHit2D[5];
 
     [SerializeField] private bool _isGrounded;
-    
-    public bool IsGrounded
-    {
+
+
+    public bool IsGrounded { 
         get
-        {
+        { 
             return _isGrounded;
         }
         private set
         { 
-            _isGrounded = value;
-            Debug.Log("In air state");
-            //animator.SetBool(AnimationStrings.isGrounded, value);
-        } 
+            _isGrounded = true; 
+            animator.SetBool(AnimationStrings.isGrounded, value);
+        }
     }
     private void Awake()
     {
@@ -33,6 +33,6 @@ public class TouchingDirections : MonoBehaviour
     }
     void FixedUpdate()
     {
-        IsGrounded = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;//switching to jump on delta
+        //IsGrounded = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
     }
 }
