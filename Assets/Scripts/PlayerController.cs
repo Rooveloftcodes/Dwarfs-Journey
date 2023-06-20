@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -88,6 +89,8 @@ public class PlayerController : MonoBehaviour
         }
     }*/
     [SerializeField] public float speed;
+    [SerializeField] public float jumpForce;
+
     private Rigidbody2D body;
     private Animator anim;
 
@@ -106,11 +109,11 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
 
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
-        if(horizontalInput > 0.01f)
+        if(horizontalInput > 0f)
         {
             transform.localScale = Vector3.one;
         }
-        else if(horizontalInput < -0.01f)
+        else if(horizontalInput < 0f)
         {
             transform.localScale = new Vector3(-1,1,1);
         }
@@ -125,7 +128,7 @@ public class PlayerController : MonoBehaviour
     }
     void jump()
     {
-        body.velocity = new Vector2(body.velocity.x, speed);
+        body.velocity = new Vector2(body.velocity.x, speed * jumpForce);
         anim.SetTrigger("isJumping");
         anim.SetBool("isRunning", false);
         isGrounded = false;
