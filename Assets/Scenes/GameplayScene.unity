@@ -180,10 +180,10 @@ MonoBehaviour:
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 3
-    LensShift: {x: 0, y: 0}
+    LensShift: {x: 0, y: -0.02}
     GateFit: 2
     FocusDistance: 10
-    m_SensorSize: {x: 1, y: 1}
+    m_SensorSize: {x: 10, y: 7.71}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2945,13 +2945,13 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 1.6354264
+  m_FocalLength: 12.609138
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
   m_Anamorphism: 0
-  m_SensorSize: {x: 1, y: 1}
-  m_LensShift: {x: 0, y: 0}
+  m_SensorSize: {x: 10, y: 7.71}
+  m_LensShift: {x: 0, y: -0.02}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -3298,6 +3298,10 @@ PrefabInstance:
     - target: {fileID: 1381043031871921898, guid: c8aabac42b277824fadf3c019a6dfc19, type: 3}
       propertyPath: _isMoving
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381043031871921898, guid: c8aabac42b277824fadf3c019a6dfc19, type: 3}
+      propertyPath: jumpForce
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1381043031871921898, guid: c8aabac42b277824fadf3c019a6dfc19, type: 3}
       propertyPath: walkSpeed

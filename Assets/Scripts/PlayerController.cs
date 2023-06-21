@@ -88,8 +88,9 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
         }
     }*/
-    [SerializeField] public float speed;
-    [SerializeField] public float jumpForce;
+    [Header("Physics")]
+    public float speed;
+    public float jumpForce;
 
     private Rigidbody2D body;
     private Animator anim;
@@ -117,7 +118,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.localScale = new Vector3(-1,1,1);
         }
-
         if(Input.GetKey(KeyCode.Space) && isGrounded)
         {
             //TODO increase jump height
