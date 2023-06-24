@@ -1,11 +1,4 @@
-using Cinemachine;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SocialPlatforms;
-using UnityEngine.UIElements;
 
 /*[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]*/
 public class PlayerController : MonoBehaviour
@@ -89,21 +82,26 @@ public class PlayerController : MonoBehaviour
         }
     }*/
     [Header("Physics")]
-    public float speed;
-    public float jumpForce;
+    [SerializeField] private float speed;
+    [SerializeField] private float jumpForce;
+
+    [SerializeField] private LayerMask groundLayer;
 
     private Rigidbody2D body;
     private Animator anim;
+    private BoxCollider boxCollider;
 
     private float horizontalInput;
     private bool isGrounded;
     private object isJumping;
+    
 
     private void Awake()
     {
         //get references for components
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider>();
     }
     private void Update()
     {
@@ -143,5 +141,10 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+    private bool Grounded()
+    {
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        return raycastHit.collider != null;
     }
 }
