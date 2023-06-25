@@ -85,14 +85,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
 
+    [Header("Layers")]
     [SerializeField] private LayerMask groundLayer;
 
     private Rigidbody2D body;
-    private Animator anim;
-    private BoxCollider boxCollider;
+    private BoxCollider2D boxCollider;
+    private Animator anim;    
 
     private float horizontalInput;
-    private bool isGrounded;
+    public bool isGrounded;
     private object isJumping;
     
 
@@ -100,8 +101,8 @@ public class PlayerController : MonoBehaviour
     {
         //get references for components
         body = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        boxCollider = GetComponent<BoxCollider>();
+        boxCollider = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();        
     }
     private void Update()
     {
@@ -124,7 +125,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isRunning", horizontalInput != 0);
         anim.SetBool("isGrounded", isGrounded);
     }
-    void jump()
+    public void jump()
     {
         body.velocity = new Vector2(body.velocity.x, speed * jumpForce);
         anim.SetTrigger("isJumping");
@@ -133,18 +134,15 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)//player is colliding with tilemap/ground
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isGrounded = true;
-        }
-        else
-        {
-            isGrounded = false;
-        }
+        if (collision.gameObject.tag == "Ground") isGrounded = true; else isGrounded = false;
     }
     private bool Grounded()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return raycastHit.collider != null;
+    }
+    public bool canAttack()
+    {
+        return horizontalInput == 0 && Grounded();
     }
 }
