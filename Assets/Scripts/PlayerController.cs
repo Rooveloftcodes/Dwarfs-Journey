@@ -1,5 +1,4 @@
 using UnityEngine;
-
 /*[RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections))]*/
 public class PlayerController : MonoBehaviour
 {
@@ -88,21 +87,25 @@ public class PlayerController : MonoBehaviour
     [Header("Layers")]
     [SerializeField] private LayerMask groundLayer;
 
+    [Header("Controls")]
+    private float attackCoolDown = 1.5f;
+
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
-    private Animator anim;    
+    private Animator animator;    
 
     private float horizontalInput;
+    private float coolDownTimer = Mathf.Infinity;
     public bool isGrounded;
-    private object isJumping;
-    
+
+    protected ExtraScript extrascript;
 
     private void Awake()
     {
         //get references for components
+        animator = GetComponent<Animator>();   
         body = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
-        anim = GetComponent<Animator>();        
+        boxCollider = GetComponent<BoxCollider2D>();         
     }
     private void Update()
     {
@@ -117,20 +120,34 @@ public class PlayerController : MonoBehaviour
         {
             transform.localScale = new Vector3(-1,1,1);
         }
-        if(Input.GetKey(KeyCode.Space) && isGrounded)
+        if(Input.GetKey(KeyCode.Space) && Grounded())
         {
-            //TODO increase jump height
             jump();
         }
-        anim.SetBool("isRunning", horizontalInput != 0);
-        anim.SetBool("isGrounded", isGrounded);
+        if (Input.GetKey(KeyCode.X) && canAttack())
+        {
+            //arrow shoots here
+            Debug.Log("Attacking");
+            timerReset();
+        }
+        //if(OnCollisionEnter2D())
+        animator.SetBool("isRunning", horizontalInput != 0);
+        animator.SetBool("isGrounded", isGrounded);
+    }
+    private void FixedUpdate()
+    {
+        coolDownTimer += Time.deltaTime;
+        /*if(coolDownTimer > attackCoolDown)
+        {
+            Debug.Log("coolDownTimer > attackCoolDown");
+        }*/
     }
     public void jump()
     {
+        //buggy again
         body.velocity = new Vector2(body.velocity.x, speed * jumpForce);
-        anim.SetTrigger("isJumping");
-        anim.SetBool("isRunning", false);
-        isGrounded = false;
+        animator.SetTrigger("isJumping");
+        animator.SetBool("isRunning", false);
     }
     private void OnCollisionEnter2D(Collision2D collision)//player is colliding with tilemap/ground
     {
@@ -143,6 +160,11 @@ public class PlayerController : MonoBehaviour
     }
     public bool canAttack()
     {
-        return horizontalInput == 0 && Grounded();
+        if (coolDownTimer > attackCoolDown && isGrounded) return true; else return false;
+        //return horizontalInput == 0 && Grounded();
+    }
+    void timerReset()
+    {
+        coolDownTimer = 0f;
     }
 }
